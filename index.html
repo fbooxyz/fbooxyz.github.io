@@ -33,6 +33,16 @@
 					this.shuffleQuestions();
 					this.changeCurrentQuestion(0);
 					this.setEventListeners();
+					this.highlightCorrectAnswers();
+				},
+
+				highlightCorrectAnswers: function() {
+					$('input', this.questions).each(function() {
+						console.log($(this).val());
+						if($(this).val() == 1) {
+							$(this).parent('li').addClass("correct");
+						}
+					});
 				},
 
 				setVariables: function() {
@@ -260,7 +270,7 @@
 
 			.question {
 				display: block;
-				text-align: center;
+				text-align: left;
 			}
 
 			.question p {
@@ -351,6 +361,10 @@
 
 			.button:hover {
 				background-color: rgb(242, 200,95);
+			}
+
+			.correct {
+				background-color: pink;
 			}
 
 			.submit {
@@ -471,8 +485,8 @@
 					<p>Wie kamen die Hersteller auf den Namen „LEGO“?</p>
 					<ul class="js-answers-container">
 						<li class="js-answer"><input type="radio" name="question-1" id="question-1-answer-1" value="1" required><label for="question-1-answer-1"><span class="letter js-letter">A</span> Das dänische „Leg godt“ bedeutet „spiel gut“ und wurde zum Namensgeber der Marke.</label></li>
-						<li class="js-answer"><input type="radio" name="question-1" id="question-1-answer-2" value="2" required><label for="question-1-answer-2"><span class="letter js-letter">B</span> LEGO steht für die Anfangsbuchstaben des Gründers Lennard Godbrand.</label></li>
-						<li class="js-answer"><input type="radio" name="question-1" id="question-1-answer-3" value="3" required><label for="question-1-answer-3"><span class="letter js-letter">C</span> Das Wort „lego“ wurde dem Lateinischen entnommen und bedeutet „Ich sammle“.</label></li>
+						<li class="js-answer"><input type="radio" name="question-1" id="question-1-answer-2" value="0" required><label for="question-1-answer-2"><span class="letter js-letter">B</span> LEGO steht für die Anfangsbuchstaben des Gründers Lennard Godbrand.</label></li>
+						<li class="js-answer"><input type="radio" name="question-1" id="question-1-answer-3" value="0" required><label for="question-1-answer-3"><span class="letter js-letter">C</span> Das Wort „lego“ wurde dem Lateinischen entnommen und bedeutet „Ich sammle“.</label></li>
 					</ul>
 				</div>
 
@@ -480,17 +494,17 @@
 					<p>Seit wann gibt es die dänische Firma LEGO?</p>
 					<ul class="js-answers-container">
 						<li class="js-answer"><input type="radio" name="question-2" id="question-2-answer-1" value="1" required><label for="question-2-answer-1"><span class="letter js-letter">A</span> 1932</label></li>
-						<li class="js-answer"><input type="radio" name="question-2" id="question-2-answer-2" value="2" required><label for="question-2-answer-2"><span class="letter js-letter">B</span> 1949</label></li>
-						<li class="js-answer"><input type="radio" name="question-2" id="question-2-answer-3" value="3" required><label for="question-2-answer-3"><span class="letter js-letter">C</span> 1961</label></li>
+						<li class="js-answer"><input type="radio" name="question-2" id="question-2-answer-2" value="0" required><label for="question-2-answer-2"><span class="letter js-letter">B</span> 1949</label></li>
+						<li class="js-answer"><input type="radio" name="question-2" id="question-2-answer-3" value="0" required><label for="question-2-answer-3"><span class="letter js-letter">C</span> 1961</label></li>
 					</ul>
 				</div>
 
 				<div class="question js-question">
-					<p>Was produzierte Lego in seinen Anfangsjahren?</p>
+					<p>Was produzierte LEGO in seinen Anfangsjahren?</p>
 					<ul class="js-answers-container">
-						<li class="js-answer"><input type="radio" name="question-3" id="question-3-answer-1" value="1" required><label for="question-3-answer-1"><span class="letter js-letter">A</span> Puppen</label></li>
-						<li class="js-answer"><input type="radio" name="question-3" id="question-3-answer-2" value="2" required><label for="question-3-answer-2"><span class="letter js-letter">B</span> Holzspielzeug</label></li>
-						<li class="js-answer"><input type="radio" name="question-3" id="question-3-answer-3" value="3" required><label for="question-3-answer-3"><span class="letter js-letter">C</span> Puzzle</label></li>
+						<li class="js-answer"><input type="radio" name="question-3" id="question-3-answer-1" value="0" required><label for="question-3-answer-1"><span class="letter js-letter">A</span> Puppen</label></li>
+						<li class="js-answer"><input type="radio" name="question-3" id="question-3-answer-2" value="1" required><label for="question-3-answer-2"><span class="letter js-letter">B</span> Holzspielzeug</label></li>
+						<li class="js-answer"><input type="radio" name="question-3" id="question-3-answer-3" value="0" required><label for="question-3-answer-3"><span class="letter js-letter">C</span> Puzzle</label></li>
 					</ul>
 				</div>
 
@@ -498,26 +512,26 @@
 					<p>Wo stehen außerhalb Dänemarks die zwei Fabriken mit der größten LEGO- Produktion (inklusive Duplo-Steinen)?</p>
 					<ul class="js-answers-container">
 						<li class="js-answer"><input type="radio" name="question-4" id="question-4-answer-1" value="1" required><label for="question-4-answer-1"><span class="letter js-letter">A</span> Ungarn und Mexiko</label></li>
-						<li class="js-answer"><input type="radio" name="question-4" id="question-4-answer-2" value="2" required><label for="question-4-answer-2"><span class="letter js-letter">B</span> Kanada und Polen</label></li>
-						<li class="js-answer"><input type="radio" name="question-4" id="question-4-answer-3" value="3" required><label for="question-4-answer-3"><span class="letter js-letter">C</span> Schweden und Brasilien</label></li>
+						<li class="js-answer"><input type="radio" name="question-4" id="question-4-answer-2" value="0" required><label for="question-4-answer-2"><span class="letter js-letter">B</span> Kanada und Polen</label></li>
+						<li class="js-answer"><input type="radio" name="question-4" id="question-4-answer-3" value="0" required><label for="question-4-answer-3"><span class="letter js-letter">C</span> Schweden und Brasilien</label></li>
 					</ul>
 				</div>
 
 				<div class="question js-question">
 					<p>Von welchem Schauspieler gibt es keine LEGO-Minifigur?</p>
 					<ul class="js-answers-container">
-						<li class="js-answer"><input type="radio" name="question-5" id="question-5-answer-1" value="1" required><label for="question-5-answer-1"><span class="letter js-letter">A</span> Johnny Depp</label></li>
-						<li class="js-answer"><input type="radio" name="question-5" id="question-5-answer-2" value="2" required><label for="question-5-answer-2"><span class="letter js-letter">B</span> Orlando Bloom</label></li>
-						<li class="js-answer"><input type="radio" name="question-5" id="question-5-answer-3" value="3" required><label for="question-5-answer-3"><span class="letter js-letter">C</span> Matt Damon</label></li>
+						<li class="js-answer"><input type="radio" name="question-5" id="question-5-answer-1" value="0" required><label for="question-5-answer-1"><span class="letter js-letter">A</span> Johnny Depp</label></li>
+						<li class="js-answer"><input type="radio" name="question-5" id="question-5-answer-2" value="0" required><label for="question-5-answer-2"><span class="letter js-letter">B</span> Orlando Bloom</label></li>
+						<li class="js-answer"><input type="radio" name="question-5" id="question-5-answer-3" value="1" required><label for="question-5-answer-3"><span class="letter js-letter">C</span> Matt Damon</label></li>
 					</ul>
 				</div>
 
 				<div class="question js-question">
 					<p>Wie viele LEGO-Steine besitzt jeder Mensch weltweit durchschnittlich?</p>
 					<ul class="js-answers-container">
-						<li class="js-answer"><input type="radio" name="question-6" id="question-6-answer-1" value="1" required><label for="question-6-answer-1"><span class="letter js-letter">A</span> mehr als 10</label></li>
-						<li class="js-answer"><input type="radio" name="question-6" id="question-6-answer-2" value="2" required><label for="question-6-answer-2"><span class="letter js-letter">B</span> mehr als 50</label></li>
-						<li class="js-answer"><input type="radio" name="question-6" id="question-6-answer-3" value="3" required><label for="question-6-answer-3"><span class="letter js-letter">C</span> mehr als 100</label></li>
+						<li class="js-answer"><input type="radio" name="question-6" id="question-6-answer-1" value="0" required><label for="question-6-answer-1"><span class="letter js-letter">A</span> mehr als 10</label></li>
+						<li class="js-answer"><input type="radio" name="question-6" id="question-6-answer-2" value="0" required><label for="question-6-answer-2"><span class="letter js-letter">B</span> mehr als 50</label></li>
+						<li class="js-answer"><input type="radio" name="question-6" id="question-6-answer-3" value="1" required><label for="question-6-answer-3"><span class="letter js-letter">C</span> mehr als 100</label></li>
 					</ul>
 				</div>
 
@@ -525,35 +539,35 @@
 					<p>Das LEGO-Set mit der höchsten Konstruktion ist…</p>
 					<ul class="js-answers-container">
 						<li class="js-answer"><input type="radio" name="question-7" id="question-7-answer-1" value="1" required><label for="question-7-answer-1"><span class="letter js-letter">A</span> der Eiffelturm</label></li>
-						<li class="js-answer"><input type="radio" name="question-7" id="question-7-answer-2" value="2" required><label for="question-7-answer-2"><span class="letter js-letter">B</span> die Freiheitsstatue</label></li>
-						<li class="js-answer"><input type="radio" name="question-7" id="question-7-answer-3" value="3" required><label for="question-7-answer-3"><span class="letter js-letter">C</span> die Cheops-Pyramide</label></li>
+						<li class="js-answer"><input type="radio" name="question-7" id="question-7-answer-2" value="0" required><label for="question-7-answer-2"><span class="letter js-letter">B</span> die Freiheitsstatue</label></li>
+						<li class="js-answer"><input type="radio" name="question-7" id="question-7-answer-3" value="0" required><label for="question-7-answer-3"><span class="letter js-letter">C</span> die Cheops-Pyramide</label></li>
 					</ul>
 				</div>
 
 				<div class="question js-question">
 					<p>Die LEGO-Gruppe ist einer der weltweit größten…</p>
 					<ul class="js-answers-container">
-						<li class="js-answer"><input type="radio" name="question-8" id="question-8-answer-1" value="1" required><label for="question-8-answer-1"><span class="letter js-letter">A</span> Lampenhersteller</label></li>
-						<li class="js-answer"><input type="radio" name="question-8" id="question-8-answer-2" value="2" required><label for="question-8-answer-2"><span class="letter js-letter">B</span> Reifenhersteller</label></li>
-						<li class="js-answer"><input type="radio" name="question-8" id="question-8-answer-3" value="3" required><label for="question-8-answer-3"><span class="letter js-letter">C</span> Schienenhersteller</label></li>
+						<li class="js-answer"><input type="radio" name="question-8" id="question-8-answer-1" value="0" required><label for="question-8-answer-1"><span class="letter js-letter">A</span> Lampenhersteller</label></li>
+						<li class="js-answer"><input type="radio" name="question-8" id="question-8-answer-2" value="1" required><label for="question-8-answer-2"><span class="letter js-letter">B</span> Reifenhersteller</label></li>
+						<li class="js-answer"><input type="radio" name="question-8" id="question-8-answer-3" value="0" required><label for="question-8-answer-3"><span class="letter js-letter">C</span> Schienenhersteller</label></li>
 					</ul>
 				</div>
 
 				<div class="question js-question">
 					<p>Wenn man 40 Milliarden LEGO-Steine übereinander baut, würde der entstehende Turm…</p>
 					<ul class="js-answers-container">
-						<li class="js-answer"><input type="radio" name="question-9" id="question-9-answer-1" value="1" required><label for="question-9-answer-1"><span class="letter js-letter">A</span> so hoch wie Frankfurts höchster Wolkenkratzer werden.</label></li>
-						<li class="js-answer"><input type="radio" name="question-9" id="question-9-answer-2" value="2" required><label for="question-9-answer-2"><span class="letter js-letter">B</span> ganze 12.300 Meter hoch sein.</label></li>
-						<li class="js-answer"><input type="radio" name="question-9" id="question-9-answer-3" value="3" required><label for="question-9-answer-3"><span class="letter js-letter">C</span> bis zum Mond reichen.</label></li>
+						<li class="js-answer"><input type="radio" name="question-9" id="question-9-answer-1" value="0" required><label for="question-9-answer-1"><span class="letter js-letter">A</span> so hoch wie Frankfurts höchster Wolkenkratzer werden.</label></li>
+						<li class="js-answer"><input type="radio" name="question-9" id="question-9-answer-2" value="0" required><label for="question-9-answer-2"><span class="letter js-letter">B</span> ganze 12.300 Meter hoch sein.</label></li>
+						<li class="js-answer"><input type="radio" name="question-9" id="question-9-answer-3" value="1" required><label for="question-9-answer-3"><span class="letter js-letter">C</span> bis zum Mond reichen.</label></li>
 					</ul>
 				</div>
 
 				<div class="question js-question">
 					<p>Was ist nach dem freundlichen Gesichtsausdruck der häufigste Ausdruck auf LEGO-Köpfen?</p>
 					<ul class="js-answers-container">
-						<li class="js-answer"><input type="radio" name="question-10" id="question-10-answer-1" value="1" required><label for="question-10-answer-1"><span class="letter js-letter">A</span> traurig</label></li>
-						<li class="js-answer"><input type="radio" name="question-10" id="question-10-answer-2" value="2" required><label for="question-10-answer-2"><span class="letter js-letter">B</span> wütend</label></li>
-						<li class="js-answer"><input type="radio" name="question-10" id="question-10-answer-3" value="3" required><label for="question-10-answer-3"><span class="letter js-letter">C</span> erschrocken</label></li>
+						<li class="js-answer"><input type="radio" name="question-10" id="question-10-answer-1" value="0" required><label for="question-10-answer-1"><span class="letter js-letter">A</span> traurig</label></li>
+						<li class="js-answer"><input type="radio" name="question-10" id="question-10-answer-2" value="1" required><label for="question-10-answer-2"><span class="letter js-letter">B</span> wütend</label></li>
+						<li class="js-answer"><input type="radio" name="question-10" id="question-10-answer-3" value="0" required><label for="question-10-answer-3"><span class="letter js-letter">C</span> erschrocken</label></li>
 					</ul>
 				</div>
 
@@ -561,17 +575,17 @@
 					<p>Was wird unter AFOLs als „Dark Ages“ bezeichnet?</p>
 					<ul class="js-answers-container">
 						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-1" value="1" required><label for="question-11-answer-1"><span class="letter js-letter">A</span> Zeit im eigenen Leben, in der man sich nicht mehr für LEGO interessiert</label></li>
-						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-2" value="2" required><label for="question-11-answer-2"><span class="letter js-letter">B</span> Zeitraum, in dem LEGO-Produktion kurzzeitig eingestellt wurde</label></li>
-						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-3" value="3" required><label for="question-11-answer-3"><span class="letter js-letter">C</span> Konstruktionen, die sich mit der Zeit des Mittelalters beschäftigen</label></li>
+						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-2" value="0" required><label for="question-11-answer-2"><span class="letter js-letter">B</span> Zeitraum, in dem LEGO Produktion kurzzeitig eingestellt wurde</label></li>
+						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-3" value="0" required><label for="question-11-answer-3"><span class="letter js-letter">C</span> Konstruktionen, die sich mit der Zeit des Mittelalters beschäftigen</label></li>
 					</ul>
 				</div>
 
 				<div class="question js-question">
 					<p>Und wofür steht die Abkürzung „MOC“?</p>
 					<ul class="js-answers-container">
-						<li class="js-answer"><input type="radio" name="question-12" id="question-12-answer-1" value="1" required><label for="question-12-answer-1"><span class="letter js-letter">A</span> „Mix of constructions“</label></li>
-						<li class="js-answer"><input type="radio" name="question-12" id="question-12-answer-2" value="2" required><label for="question-12-answer-2"><span class="letter js-letter">B</span> „My own creation“</label></li>
-						<li class="js-answer"><input type="radio" name="question-12" id="question-12-answer-3" value="3" required><label for="question-12-answer-3"><span class="letter js-letter">C</span> „Master of creativity“</label></li>
+						<li class="js-answer"><input type="radio" name="question-12" id="question-12-answer-1" value="0" required><label for="question-12-answer-1"><span class="letter js-letter">A</span> „Mix of constructions“</label></li>
+						<li class="js-answer"><input type="radio" name="question-12" id="question-12-answer-2" value="1" required><label for="question-12-answer-2"><span class="letter js-letter">B</span> „My own creation“</label></li>
+						<li class="js-answer"><input type="radio" name="question-12" id="question-12-answer-3" value="0" required><label for="question-12-answer-3"><span class="letter js-letter">C</span> „Master of creativity“</label></li>
 					</ul>
 				</div>
 
