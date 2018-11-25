@@ -33,7 +33,7 @@
 					this.shuffleQuestions();
 					this.changeCurrentQuestion(0);
 					this.setEventListeners();
-					this.highlightCorrectAnswers();
+					// this.highlightCorrectAnswers();
 				},
 
 				highlightCorrectAnswers: function() {
@@ -250,7 +250,7 @@
 				margin-left: auto;
 				margin-right: auto;
 				box-sizing: border-box;
-				/*padding: 10px;*/
+				padding: 10px;
 			}
 
 			h1 {
@@ -265,17 +265,17 @@
 
 			h2 {
 				font-size: 20px;
-				font-weight: 700;
+				/*font-weight: 700;*/
 			}
 
 			.question {
 				display: block;
-				text-align: left;
+				text-align: center;
 			}
 
 			.question p {
 					font-size: 20px;
-					/*font-weight: 700;*/
+					font-weight: 700;
 					line-height: 22px;
 					min-height: 66px;
 					/*background-color: #000;*/
@@ -295,6 +295,7 @@
 				padding: 0;
 				cursor: pointer;
 				display: block;
+				text-align: left;
 			}
 
 			.question ul li label {
@@ -360,15 +361,15 @@
 			}
 
 			.button:hover {
-				background-color: rgb(242, 200,95);
+				background-color: rgb(242,200,95);
 			}
 
-			.correct {
+			/*.correct {
 				background-color: pink;
-			}
+			}*/
 
 			.submit {
-				background-color: blue;
+				background-color: rgb(74,97,252);
 				position: absolute;
 				top: 50%;
 				left: 50%;
@@ -509,7 +510,7 @@
 				</div>
 
 				<div class="question js-question">
-					<p>Wo stehen außerhalb Dänemarks die zwei Fabriken mit der größten LEGO- Produktion (inklusive Duplo-Steinen)?</p>
+					<p>Wo stehen außerhalb Dänemarks die zwei Fabriken mit der größten LEGO-Produktion (inklusive Duplo-Steinen)?</p>
 					<ul class="js-answers-container">
 						<li class="js-answer"><input type="radio" name="question-4" id="question-4-answer-1" value="1" required><label for="question-4-answer-1"><span class="letter js-letter">A</span> Ungarn und Mexiko</label></li>
 						<li class="js-answer"><input type="radio" name="question-4" id="question-4-answer-2" value="0" required><label for="question-4-answer-2"><span class="letter js-letter">B</span> Kanada und Polen</label></li>
@@ -575,7 +576,7 @@
 					<p>Was wird unter AFOLs als „Dark Ages“ bezeichnet?</p>
 					<ul class="js-answers-container">
 						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-1" value="1" required><label for="question-11-answer-1"><span class="letter js-letter">A</span> Zeit im eigenen Leben, in der man sich nicht mehr für LEGO interessiert</label></li>
-						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-2" value="0" required><label for="question-11-answer-2"><span class="letter js-letter">B</span> Zeitraum, in dem LEGO Produktion kurzzeitig eingestellt wurde</label></li>
+						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-2" value="0" required><label for="question-11-answer-2"><span class="letter js-letter">B</span> Zeitraum, in dem LEGO-Produktion kurzzeitig eingestellt wurde</label></li>
 						<li class="js-answer"><input type="radio" name="question-11" id="question-11-answer-3" value="0" required><label for="question-11-answer-3"><span class="letter js-letter">C</span> Konstruktionen, die sich mit der Zeit des Mittelalters beschäftigen</label></li>
 					</ul>
 				</div>
