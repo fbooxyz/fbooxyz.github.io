@@ -24,12 +24,14 @@
 				this.submit = $('.js-submit');
 				this.prevButton = $('.js-prev-button');
 				this.nextButton = $('.js-next-button');
+				this.timer = $('.js-timer', this.nextButton);
 				this.stringCurrentQuestion = $('.js-current-question');
 				this.stringQuestionsLength = $('.js-questions-length');
 				this.currentQuestion = 0;
 				this.pilesToAnimate = 0;
 				this.startTime = 0;
 				this.hasStarted = false;
+				this.timerTimeout = null;
 			};
 
 			legoForm.prototype = {
@@ -48,13 +50,6 @@
 					// this.highlightCorrectAnswers();
 				},
 
-				highlightCorrectAnswers: function() {
-					$('input', this.questions).each(function() {
-						if($(this).val() == 1) {
-							$(this).parent('li').addClass("correct");
-						}
-					});
-				},
 
 				setVariables: function() {
 					this.questions = $('.js-question');
@@ -79,21 +74,59 @@
 					this.prevButton.on('click', function() {
 						if(ref.currentQuestion > 0) {
 							ref.changeCurrentQuestion(-1);
+							ref.clearTimerTimeout();
+							ref.setTimerTime('', false);
 						}
 					});
 
 					$('input', this.form).on('change', function () {
 						ref.startCounting();
 						ref.highlightAnswer($(this));
+						ref.highlightCorrectAnswers($(this));
 						ref.changeButtons();
 						ref.checkForSubmit();
 
 						if(ref.isCurrentQuestionAnswered() && ref.currentQuestion < (ref.questions.length - 1)) {
-							ref.changeCurrentQuestion(1);
+							// ref.changeCurrentQuestion(1);
+							ref.setChangeTimer();
 						}
 					});
 
 					this.stringQuestionsLength.text(this.questions.length);
+				},
+
+				setChangeTimer: function() {
+					var ref = this;
+					var startTime = 5;
+					this.setTimerTime(startTime, true);
+					// this.setAutomaticTimeTurn(startTime);
+				},
+
+				clearTimerTimeout: function() {
+					clearTimeout(this.timerTimeout);
+				},
+
+				setAutomaticTimeTurn: function(time) {
+					var ref = this;
+					if(time > 0) {
+						this.timerTimeout = setTimeout(function() {
+							ref.setTimerTime(time, true);
+						}, 1000);						
+					} else {
+						this.changeCurrentQuestion(1);
+					}
+				},
+
+				setTimerTime: function(time, automatic) {
+					if(time != '') {
+						this.timer.text('('+time+')');
+					} else {
+						this.timer.text('');
+					}
+
+					if(automatic) {
+						this.setAutomaticTimeTurn(time - 1);
+					}
 				},
 
 				startCounting: function() {
@@ -144,9 +177,27 @@
 
 				},
 
+				disableInput: function(question) {
+					$(question).attr('disabled', true);
+				},
+
 				highlightAnswer: function(answer) {
 					$('input[name='+$(answer).attr('name')+']').parent('li').removeClass('highlight');
 					answer.parent('li').addClass('highlight');
+				},
+
+				highlightCorrectAnswer: function(question) {
+					if($(question).val() == 1) {
+						$(question).parent('li').addClass("correct");
+					}
+				},
+
+				highlightCorrectAnswers: function(question) {
+					var ref = this;
+					$('input', $('input[name='+$(question).attr('name')+']').parent('li')).each(function() {
+						ref.highlightCorrectAnswer(this);
+						ref.disableInput(this);
+					});
 				},
 
 				showNextButton: function() {
@@ -756,6 +807,10 @@
 			  top: 63px;
 			  left: 279px;
 			}
+
+			.correct {
+				background-color: rgb(43,221,145);
+			}
 			
 			.hidden {
 				display: none;
@@ -768,7 +823,7 @@
 		<h1>Wie viel AFOL steckt in dir?</h1>
 		<form class="js-form">
 
-			<div class="js-counter-container hidden">
+			<div class="js-counter-container">
 				<h2><span class="js-current-question"></span> / <span class="js-questions-length"></span></h2>
 			</div>
 
@@ -887,7 +942,7 @@
 			<div class="control-container js-control-container">
 				<button type="button" class="button left js-prev-button">Zurück</button>
 				<button class="submit button hidden js-submit" type="submit">Ergebnis zeigen</button>
-				<button type="button" class="button right js-next-button">Weiter</button>
+				<button type="button" class="button right js-next-button">Weiter <span class="js-timer"></span></button>
 			</div>
 
 			<div class="result js-result-container hidden">
