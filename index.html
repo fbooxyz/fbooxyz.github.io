@@ -32,6 +32,7 @@
 				this.startTime = 0;
 				this.hasStarted = false;
 				this.timerTimeout = null;
+				this.startTimerTime = 3;
 			};
 
 			legoForm.prototype = {
@@ -97,9 +98,8 @@
 
 				setChangeTimer: function() {
 					var ref = this;
-					var startTime = 5;
 					this.clearTimerTimeout();
-					this.setTimerTime(startTime, true);
+					this.setTimerTime(this.startTimerTime, true);
 					// this.setAutomaticTimeTurn(startTime);
 				},
 
@@ -109,7 +109,7 @@
 
 				setAutomaticTimeTurn: function(time) {
 					var ref = this;
-					if(time > 0) {
+					if(time >= 0) {
 						this.timerTimeout = setTimeout(function() {
 							ref.setTimerTime(time, true);
 						}, 1000);						
