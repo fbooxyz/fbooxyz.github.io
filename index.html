@@ -32,7 +32,7 @@
 				this.startTime = 0;
 				this.hasStarted = false;
 				this.timerTimeout = null;
-				this.startTimerTime = 3;
+				this.startTimerTime = 4;
 			};
 
 			legoForm.prototype = {
@@ -68,6 +68,7 @@
 
 					this.nextButton.on('click', function() {
 						if(ref.isCurrentQuestionAnswered() && ref.currentQuestion < (ref.questions.length - 1)) {
+							ref.clearTimerTimeout();
 							ref.changeCurrentQuestion(1);
 						}
 					});
@@ -109,18 +110,21 @@
 
 				setAutomaticTimeTurn: function(time) {
 					var ref = this;
-					if(time >= 0) {
+					if(time > 0) {
 						this.timerTimeout = setTimeout(function() {
-							ref.setTimerTime(time, true);
+							// if(time > 0) {
+								ref.setTimerTime(time, true);
+							// }
 						}, 1000);						
 					} else {
+						// console.log("changed que")
 						this.changeCurrentQuestion(1);
 					}
 				},
 
 				setTimerTime: function(time, automatic) {
 					if(time != '') {
-						this.timer.text('('+time+')');
+						this.timer.text('('+(time - 1)+')');
 					} else {
 						this.timer.text('');
 					}
